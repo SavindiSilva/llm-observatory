@@ -6,8 +6,11 @@ from providers import ProviderError, ProviderResult, get_provider
 
 
 def validate_model(provider: str, model: str) -> None:
-    if pricing.get_model_info(provider, model) is None:
+    info = pricing.get_model_info(provider, model)
+    if info is None:
         raise ValueError(f"Model '{model}' is not supported for provider '{provider}'")
+    if info.retired:
+        raise ValueError(f"Model '{model}' has been retired and can no longer be used for new requests")
 
 
 async def call_provider(provider: str, model: str, prompt: str, temperature: float, max_tokens: int) -> ProviderResult:

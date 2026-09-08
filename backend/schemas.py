@@ -75,6 +75,7 @@ class ModelOut(BaseModel):
     input_price_per_million: float
     output_price_per_million: float
     context_window: int
+    retired: bool
 
 
 class MetricsSummaryOut(BaseModel):

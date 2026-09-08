@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
+import { Logo } from "./components/Logo";
+
 const navItems = [
   { to: "/", label: "Dashboard", end: true },
   { to: "/history", label: "History", end: false },
@@ -12,16 +14,10 @@ function App() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-[var(--hairline)] bg-[var(--surface-1)]">
+      <header className="glass-surface border-b border-[var(--hairline)]">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:justify-start sm:gap-6 sm:px-6">
           <div className="flex items-center gap-2">
-            <span
-              className="flex h-7 w-7 items-center justify-center rounded-lg text-sm font-bold text-white"
-              style={{ background: "var(--series-groq)" }}
-              aria-hidden="true"
-            >
-              O
-            </span>
+            <Logo />
             <span className="text-sm font-semibold tracking-tight">LLM Observatory</span>
           </div>
 

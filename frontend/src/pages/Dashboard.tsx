@@ -25,6 +25,7 @@ export function Dashboard() {
           model,
           displayName: info?.display_name ?? model,
           provider: info?.provider ?? "unknown",
+          retired: info?.retired ?? false,
           count,
         };
       })

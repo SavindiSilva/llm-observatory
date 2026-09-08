@@ -16,6 +16,7 @@ def list_models():
             input_price_per_million=info.input_price_per_million,
             output_price_per_million=info.output_price_per_million,
             context_window=info.context_window,
+            retired=info.retired,
         )
         for info in pricing.all_models()
     ]

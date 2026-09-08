@@ -53,6 +53,7 @@ export function FilterBar({
         {modelOptions.map((m) => (
           <option key={m.name} value={m.name}>
             {m.display_name}
+            {m.retired ? " (retired)" : ""}
           </option>
         ))}
       </select>

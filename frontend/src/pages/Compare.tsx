@@ -59,8 +59,8 @@ export function Compare() {
   const [panelB, setPanelB] = useState<PanelState>({ status: "idle" });
   const [groupId, setGroupId] = useState<string | null>(null);
 
-  const defaultA = models.find((m) => m.provider === "groq");
-  const defaultB = models.find((m) => m.provider === "gemini");
+  const defaultA = models.find((m) => m.provider === "groq" && !m.retired);
+  const defaultB = models.find((m) => m.provider === "gemini" && !m.retired);
   const targetA = targetAOverride ?? (defaultA ? { provider: "groq" as Provider, model: defaultA.name } : null);
   const targetB = targetBOverride ?? (defaultB ? { provider: "gemini" as Provider, model: defaultB.name } : null);
 

@@ -10,6 +10,15 @@ single portfolio-sized app.
 Every number in the UI comes from a real logged request against Groq's and
 Google's live APIs. Nothing is mocked or seeded with fake data.
 
+<p align="center">
+  <img src="screenshots/dashboard.png" width="49%" alt="Dashboard — live cost, latency, and token metrics across every logged request" />
+  <img src="screenshots/history.png" width="49%" alt="Request history with provider, model, and status filters" />
+</p>
+<p align="center">
+  <img src="screenshots/detail.png" width="49%" alt="Request detail view with LLM-as-judge evaluation scores" />
+  <img src="screenshots/compare.png" width="49%" alt="Side-by-side model comparison with independent loading states" />
+</p>
+
 ## What it does
 
 - **`POST /chat`** — sends a prompt to a chosen provider/model, logs the full

@@ -13,7 +13,8 @@ const selectClass =
   "rounded-lg border border-[var(--hairline)] bg-[var(--surface-1)] px-3 py-1.5 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--series-groq)] disabled:cursor-not-allowed disabled:opacity-60";
 
 export function TargetPicker({ label, provider, model, models, disabled, onChange }: TargetPickerProps) {
-  const modelOptions = models.filter((m) => m.provider === provider);
+  const selectableModels = models.filter((m) => !m.retired);
+  const modelOptions = selectableModels.filter((m) => m.provider === provider);
 
   return (
     <div className="flex flex-col gap-1.5">
@@ -25,7 +26,7 @@ export function TargetPicker({ label, provider, model, models, disabled, onChang
           disabled={disabled}
           onChange={(e) => {
             const nextProvider = e.target.value as Provider;
-            const firstModel = models.find((m) => m.provider === nextProvider);
+            const firstModel = selectableModels.find((m) => m.provider === nextProvider);
             onChange(nextProvider, firstModel?.name ?? "");
           }}
         >

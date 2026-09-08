@@ -17,6 +17,10 @@ class ModelInfo:
     input_price_per_million: float
     output_price_per_million: float
     context_window: int
+    # Retired models stay in the catalog so historical requests logged
+    # against them still resolve a display_name/price, but they can no
+    # longer be selected for new /chat or /compare requests.
+    retired: bool = False
 
 
 MODEL_CATALOG: dict[str, dict[str, ModelInfo]] = {
@@ -62,6 +66,20 @@ MODEL_CATALOG: dict[str, dict[str, ModelInfo]] = {
             input_price_per_million=1.50,
             output_price_per_million=9.00,
             context_window=1048576,
+        ),
+        # Retired: thinking_budget had no effect on this model's latency
+        # (stayed ~29s regardless), so it was pulled from the selectable
+        # catalog. Kept here so its historical requests still render with
+        # a real display name and cost instead of falling back to the raw
+        # model id.
+        "gemini-3.6-flash": ModelInfo(
+            provider="gemini",
+            name="gemini-3.6-flash",
+            display_name="Gemini 3.6 Flash",
+            input_price_per_million=0.75,
+            output_price_per_million=3.75,
+            context_window=1048576,
+            retired=True,
         ),
     },
 }
