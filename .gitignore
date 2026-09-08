@@ -229,3 +229,8 @@ yarn-error.log*
 .env
 .env.*
 !.env.example
+
+# SQLite database
+*.db
+*.sqlite
+*.sqlite3
